@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Registration</h1>
+        <form action="registration.php" method="post">
+            <fieldset>
+                <label for="fname">
+                    First Name <input type="text" name="fname" id="fname" required>
+                </label>
+                <label for="minit">
+                    Middle Initial <input type="text" name="minit" id="minit" maxlength="1">
+                </label>
+                <label for="lname">
+                    Last Name <input type="text" name="lname" id="lname" required>
+                </label>
+                <label for="email">
+                    Email <input type="email" name="email" id="email" required>
+                </label>
+                <label for="pincode">
+                    Pincode <input type="password" name="pincode" id="pincode" required>
+                </label>
+            </fieldset>
+            <fieldset>
+                <legend>Phone Numbers</legend>
+                <label id="phoneno-list">
+                    1. <input type="tel" name="phoneno[]">
+                </label>
+                <button type="button">Add Phone Number</button>
+                <button type="button">Remove Phone Number</button>
+            </fieldset>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add/Remove Publication</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Add/Remove Publication</h1>
+            <form action="add_rm_publication.php" method="get">
+                <fieldset>
+                    <legend>Author</legend>
+                    <label for="fname">
+                        First Name <input type="text" name="fname" id="fname" required>
+                    </label>
+                    <label for="minit">
+                        Middle Initial <input type="text" name="minit" id="minit" maxlength="1">
+                    </label>
+                    <label for="lname">
+                        Last Name <input type="text" name="lname" id="lname" required>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <label for="isbn">
+                        ISBN <input type="text" name="isbn" id="isbn" required>
+                    </label>
+                    <label for="title">
+                        Title <input type="text" name="title" id="title" required>
+                    </label>
+                    <label for="year">
+                        Publishing Year <input type="number" name="year" id="year" required>
+                    </label>
+                    <label for="publisher">
+                        Publisher <input type="text" name="publisher" id="publisher" required>
+                    </label>
+                    <label for="medium">
+                        Medium
+                        <select name="medium" id="medium">
+                            <option value="">None</option>
+                            <option value="print">Print</option>
+                            <option value="ebook">EBook</option>
+                            <option value="audio">Audio</option>
+                            <option value="video">Video</option>
+                        </select>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Action</legend>
+                    <label for="add">
+                        Add <input type="radio" name="action" id="add" value="add" required>
+                    </label>
+                    <label for="rm">
+                        Remove <input type="radio" name="action" id="rm" value="rm" required>
+                    </label>
+                </fieldset>
+                <button type="submit">Execute</button>
+            </form>
+        </div>
+    </body>
+</html>
