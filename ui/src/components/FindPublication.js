@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material'
 
-export default function FindPublication() {
+export default function CheckoutPage() {
 
     const [userId, setUserId] = useState("");
     const [pincode, setPincode] = useState(0);
@@ -27,18 +27,21 @@ export default function FindPublication() {
     }
 
     const sendCheckout = (event) => {
-        console.log(event);
+        console.log([userId, pincode, libId, pubId]);
     }
 
     return (
         <Box component="div" sx={{ m: 2 }} textAlign='center'>
-            <Typography variant='h1' gutterBottom> Find Publication </Typography>
+            <Typography variant='h1' gutterBottom> Checkout </Typography>
             <Box component="form" textAlign='center' sx={{
                 '& > :not(style)': { m: 2, width: '25ch' },
                 }} 
                 noValidate autoComplete="off">
+                <TextField id="uid" label="User ID" variant="outlined" required onChange={handleUIDChange}/>
+                <TextField id="pin" label="Pincode" variant="outlined" type="password" required onChange={handlePincodeChange}/>
+                <TextField id="libid" label="Library ID" variant="outlined" required onChange={handleLIDChange}/>
                 <TextField id="pubid" label="Publication ID" variant="outlined" required onChange={handlePIDChange}/>
-                <Button variant="outlined" onClick={sendCheckout}>Find Publication</Button>
+                <Button variant="outlined" onClick={sendCheckout}>Checkout</Button>
             </Box>
             <Typography variant='p' gutterBottom> Status: {currentStatus} <br/> </Typography>
             <Typography variant='p' gutterBottom> Return Date: {currentReturnDate} </Typography>
