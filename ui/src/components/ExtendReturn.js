@@ -39,9 +39,11 @@ export default function ExtendReturn() {
                 noValidate autoComplete="off">
                 <TextField id="uid" label="User ID" variant="outlined" required onChange={handleUIDChange}/>
                 <TextField id="pin" label="Pincode" variant="outlined" type="password" required onChange={handlePincodeChange}/>
-                
+                <Button variant="outlined" onClick={sendCheckout} sx={{ m: 3, width: '25ch' }}>Retrieve Data</Button>
             </Box>
-            <Button variant="outlined" onClick={sendCheckout} sx={{ m: 3, width: '25ch' }}>Retrieve Data</Button>
+            
+            <Typography variant='p' gutterBottom> Status: {currentStatus} <br/> </Typography>
+            <Typography variant='p' gutterBottom> Return Date: {currentReturnDate} </Typography>
         </Box>
     );
 }
