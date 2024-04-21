@@ -21,7 +21,9 @@ const query = async (sql) => {
 
 const execute = async (sql, params) => {
   const conn = await getConnection();
-  const [result, fields] = await conn.execute(sql, params);
+  const statement = await conn.prepare(sql);
+  const [result, fields] = await statement.execute(params);
+  await statement.close();
   await conn.end();
   return result;
 };
