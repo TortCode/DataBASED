@@ -2,11 +2,13 @@ import './App.css';
 import AddRemovePublication from './components/AddRemovePublication';
 import './components/CheckoutPage'
 import CheckoutPage from './components/CheckoutPage';
-import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
+import { createTheme, ThemeProvider, CssBaseline, AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { deepOrange, grey } from '@mui/material/colors';
 import FindPublication from './components/FindPublication';
 import Registration from './components/Registration';
 import ExtendReturn from './components/ExtendReturn';
+import MainPage from './components/MainPage'
+import { useState } from 'react';
 
 const darkTheme = createTheme({
   palette: {
@@ -22,17 +24,35 @@ const darkTheme = createTheme({
 });
 
 function App() {
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const tabs = [(<MainPage/>), (<CheckoutPage />), (<AddRemovePublication/>), (<FindPublication/>), (<ExtendReturn/>), (<Registration/>)];
+  
+  const handleTabChange = (event) => {
+    setCurrentPage(parseInt(event.target.id.substring(2)));
+  }
+
+  const toolbar = [<Typography key={0} id='tb0' variant="h5" component="div" sx={{ flexGrow: 1 }} onClick={handleTabChange}> DataBASED </Typography>,
+                    <Button key={1} id='tb1'  color="inherit" onClick={handleTabChange}> Checkout </Button>,
+                    <Button key={2} id='tb2' color="inherit" onClick={handleTabChange}> Add/Remove </Button>,
+                    <Button key={3} id='tb3' color="inherit" onClick={handleTabChange}> Find </Button>,
+                    <Button key={4} id='tb4' color="inherit" onClick={handleTabChange}> Extend </Button>,
+                    <Button key={5} id='tb5' color="inherit" onClick={handleTabChange}> Register </Button>];
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div className="App">
         <header className="App-header">
-          <CheckoutPage />
-          <AddRemovePublication/>
-          <FindPublication/>
-          <Registration/>
-          <ExtendReturn/>
+          <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+              <Toolbar>
+                {toolbar}
+              </Toolbar>
+            </AppBar>
+          </Box>
         </header>
+        {tabs[currentPage]}
       </div>
     </ThemeProvider>
   );

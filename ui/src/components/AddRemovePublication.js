@@ -33,7 +33,7 @@ export default function AddRemovePublication() {
     }
 
     return (
-        <Box component="div" sx={{ m: "auto", textAlign: "center"}}>
+        <Box component="div" sx={{ m:2, textAlign: "center"}}>
             <Typography variant='h1' gutterBottom> Add/Remove Publication </Typography>
             <Box component="form" textAlign='center' sx={{ ml: "20", width: '100%'}} 
                 noValidate autoComplete="off">
