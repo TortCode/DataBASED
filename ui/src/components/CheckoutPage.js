@@ -38,7 +38,7 @@ export default function CheckoutPage() {
                 }} 
                 noValidate autoComplete="off">
                 <TextField id="uid" label="User ID" variant="outlined" required onChange={handleUIDChange}/>
-                <TextField id="pincode" label="Pincode" variant="outlined" type="password" required onChange={handlePincodeChange}/>
+                <TextField id="pin" label="Pincode" variant="outlined" type="password" required onChange={handlePincodeChange}/>
                 <TextField id="libid" label="Library ID" variant="outlined" required onChange={handleLIDChange}/>
                 <TextField id="pubid" label="Publication ID" variant="outlined" required onChange={handlePIDChange}/>
                 <Button variant="outlined" onClick={sendCheckout}>Checkout</Button>
