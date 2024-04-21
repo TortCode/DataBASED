@@ -74,7 +74,7 @@ export default function FindPublication() {
                         />
                     </fieldset>
                 </Stack>
-                <Button variant="outlined" onClick={sendCheckout}>Search</Button>
+                <Button variant="outlined" onClick={sendCheckout} sx={{ m: 3, width: '25ch' }}>Search</Button>
             </Box>
             <Typography variant='p' gutterBottom> Status: {currentStatus} <br/> </Typography>
             <Typography variant='p' gutterBottom> Return Date: {currentReturnDate} </Typography>

@@ -5,6 +5,7 @@ import CheckoutPage from './components/CheckoutPage';
 import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 import { deepOrange, grey } from '@mui/material/colors';
 import FindPublication from './components/FindPublication';
+import Registration from './components/Registration';
 
 const darkTheme = createTheme({
   palette: {
@@ -28,6 +29,7 @@ function App() {
           <CheckoutPage />
           <AddRemovePublication/>
           <FindPublication/>
+          <Registration/>
         </header>
       </div>
     </ThemeProvider>
