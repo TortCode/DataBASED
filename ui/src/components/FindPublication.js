@@ -27,7 +27,7 @@ export default function FindPublication() {
     }
 
     const sendCheckout = (event) => {
-        console.log([userId, pincode, libId, pubId]);
+        console.log(event);
     }
 
     return (
