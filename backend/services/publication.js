@@ -1,7 +1,7 @@
 const db = require("./db.js");
 
-const addPublication = async (data) => {
-  const { title, year, medium, authorid, publisherid } = data;
+const addPublication = async ({ title, year, medium, authorid, publisherid }) => {
+  const data = { title, year, medium, authorid, publisherid };
 
   const sql =
     "INSERT INTO publication (Name, Publishing_Year, Medium, AID, CID) VALUES (?, ?, ?, ?, ?)";
@@ -14,12 +14,17 @@ const addPublication = async (data) => {
     publisherid,
   ]);
 
-  return { PID: result.insertId, ...data };
+  const sql2 = 
+    "SELECT A.F_Name AS fname, A.M_Init AS minit, A.L_Name AS lname, P.PID AS publicationid, P.Name AS title, P.Publishing_Year AS year, PB.Name AS publisher " +
+    "FROM publication AS P " +
+    "JOIN author AS A on P.AID = A.AID " +
+    "JOIN publisher AS PB on P.CID = PB.CID " +
+    "WHERE P.PID = ?";
+
+  return (await db.execute(sql2, [result.insertId]))[0];
 };
 
-const findPublications = async (data) => {
-  const { fname, minit, lname, publicationid, title, year, publisher, medium } =
-    data;
+const findPublications = async ({ fname, minit, lname, publicationid, title, year, publisher, medium }) => {
 
   const params = {
     ["A.F_Name"]: fname,
@@ -33,17 +38,26 @@ const findPublications = async (data) => {
   };
 
   const cleanedParams = Object.entries(params).filter(
-    ([key, value]) => value !== undefined
+    ([key, value]) => value !== undefined && value !== null && value !== ""
   );
 
-  const query = cleanedParams.map(([key, _]) => `${key} = ?`).join(" AND ");
-
-  const sql =
-    "SELECT * FROM publication AS P " +
+  let sql =
+    "SELECT A.F_Name AS fname, A.M_Init AS minit, A.L_Name AS lname, P.PID AS publicationid, P.Name AS title, P.Publishing_Year AS year, PB.Name AS publisher " +
+    "FROM publication AS P " +
     "JOIN author AS A on P.AID = A.AID " +
-    "JOIN publisher AS PB on P.CID = PB.CID " +
-    "WHERE " +
-    query;
+    "JOIN publisher AS PB on P.CID = PB.CID "
+
+  if (cleanedParams.length > 0) {
+    const query = cleanedParams.map(([key, _]) => {
+      if (["A.F_Name", "A.M_Init", "A.L_Name", "P.Name", "PB.Name"].includes(key)) {
+        return `${key} LIKE CONCAT('%', ?, '%')`;
+      } else {
+        return `${key} = ?`;
+      }
+    }).join(" AND ");
+
+    sql += `WHERE ${query}`;
+  }
 
   return await db.execute(
     sql,

@@ -2,11 +2,13 @@ const router = require("express").Router();
 const publicationService = require("../services/publication");
 
 router.get("/", async (req, res) => {
-  res.json(await publicationService.findPublications(req.body));
+  const result = await publicationService.findPublications(req.body);
+  res.json(result);
 });
 
 router.post("/", async (req, res) => {
-  res.status(201).json(await publicationService.addPublication(req.body));
+  const result = await publicationService.addPublication(req.body);
+  res.status(201).json(result);
 });
 
 router.delete("/:id", async (req, res) => {

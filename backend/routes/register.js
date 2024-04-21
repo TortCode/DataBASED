@@ -2,7 +2,8 @@ const router = require('express').Router();
 const registerService = require('../services/register');
 
 router.post('/', async (req, res) => {
-    res.status(201).json(await registerService.register(req.body));
+    const result = await registerService.register(req.body);
+    res.status(201).json(result);
 })
 
 module.exports = router;

@@ -28,7 +28,7 @@ const execute = async (sql, params) => {
   return result;
 };
 
-module.export = {
+module.exports = {
   getConnection,
   query,
   execute,

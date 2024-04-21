@@ -25,7 +25,7 @@ const register = async (data) => {
 
   await conn.end();
 
-  return { UID: userInsertResult.insertId, ...data };
+  return { userid: userInsertResult.insertId, ...data };
 };
 
 module.exports = {
