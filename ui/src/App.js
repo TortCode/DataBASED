@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 import { deepOrange, grey } from '@mui/material/colors';
 import FindPublication from './components/FindPublication';
 import Registration from './components/Registration';
+import ExtendReturn from './components/ExtendReturn';
 
 const darkTheme = createTheme({
   palette: {
@@ -30,6 +31,7 @@ function App() {
           <AddRemovePublication/>
           <FindPublication/>
           <Registration/>
+          <ExtendReturn/>
         </header>
       </div>
     </ThemeProvider>
