@@ -16,5 +16,5 @@ const register = async (data) => {
 
     await conn.end();
 
-    return { uid: userInsertResult.insertId, ...data };
+    return { UID: userInsertResult.insertId, ...data };
 }
