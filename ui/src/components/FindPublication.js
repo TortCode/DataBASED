@@ -37,11 +37,8 @@ export default function FindPublication() {
                 '& > :not(style)': { m: 2, width: '25ch' },
                 }} 
                 noValidate autoComplete="off">
-                <TextField id="uid" label="User ID" variant="outlined" required onChange={handleUIDChange}/>
-                <TextField id="pin" label="Pincode" variant="outlined" type="password" required onChange={handlePincodeChange}/>
-                <TextField id="libid" label="Library ID" variant="outlined" required onChange={handleLIDChange}/>
                 <TextField id="pubid" label="Publication ID" variant="outlined" required onChange={handlePIDChange}/>
-                <Button variant="outlined" onClick={sendCheckout}>Checkout</Button>
+                <Button variant="outlined" onClick={sendCheckout}>Find Publication</Button>
             </Box>
             <Typography variant='p' gutterBottom> Status: {currentStatus} <br/> </Typography>
             <Typography variant='p' gutterBottom> Return Date: {currentReturnDate} </Typography>
