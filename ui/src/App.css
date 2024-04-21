@@ -1,0 +1,44 @@
+h1 {
+  margin: 1em auto;
+  text-align: center;
+}
+
+form {
+  width: 80%;
+  margin: auto;
+  max-width: 1200px;
+  min-width: 50%;
+}
+
+
+label {
+  display: block;
+  margin: 0.5em 0;
+}
+
+input {
+  width: 100%;
+}
+
+input[type="radio"] {
+  width: auto;
+}
+
+button {
+  
+  margin: 1em 0;
+}
+
+table {
+  width: 100%;
+  margin: 1em 0;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 5px 10px;
+}
