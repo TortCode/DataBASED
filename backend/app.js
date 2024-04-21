@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 
 // app.use(cors());
-app.use(express.static("build/"));
+app.use(express.static("../ui/build/"));
 app.use(express.json());
 
 app.use("/api/register", require("./routes/register.js"));
