@@ -1,0 +1,11 @@
+POST http://localhost:3000/api/register
+Content-Type: application/json
+
+{
+    "fname": "George",
+    "minit": "W",
+    "lname": "Bush",
+    "email": "43@prez.gov",
+    "pincode": "1234",
+    "phoneNos": ["1234567890", "2345678901"]
+}
