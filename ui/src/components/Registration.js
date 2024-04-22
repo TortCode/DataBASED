@@ -12,7 +12,7 @@ export default function Registration() {
     const [phoneNo1, setPhoneNo1] = useState("");
     const [phoneNo2, setPhoneNo2] = useState("");
     const [phoneNo3, setPhoneNo3] = useState("");
-    const [phoneNoCount, setPhoneCt] = useState(1);
+    const [phoneNoCount, setPhoneCt] = useState(0);
     const [buttons, setButtons] = useState([]);
     const [currentStatus, setCurrentStatus] = useState("No operation in progress.");
 

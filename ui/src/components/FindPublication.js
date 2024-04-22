@@ -11,7 +11,7 @@ export default function FindPublication() {
     const [lname, setLname] = useState("");
     const [title, setTitle] = useState("");
     const [rows, setRows] = useState("");
-    const [year, setYear] = useState(1);
+    const [year, setYear] = useState(0);
     const [publisher, setPublisher] = useState("");
 
     const [currentStatus, setCurrentStatus] = useState("No operation in progress.");
