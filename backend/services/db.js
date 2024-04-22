@@ -2,9 +2,9 @@ const mysql = require("mysql2/promise");
 
 const dbConfig = {
   host: process.env.HOST,
-  user: process.env.USER,
+  user: process.env.USER || "DataBased",
   password: process.env.PASSWORD,
-  database: process.env.DATABASE,
+  database: process.env.DATABASE || "lms",
 };
 
 const getConnection = async () => {

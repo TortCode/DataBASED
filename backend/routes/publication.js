@@ -2,7 +2,7 @@ const router = require("express").Router();
 const publicationService = require("../services/publication");
 
 router.get("/", async (req, res) => {
-  const result = await publicationService.findPublications(req.body);
+  const result = await publicationService.findPublications(req.query);
   res.json(result);
 });
 

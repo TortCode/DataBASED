@@ -42,7 +42,7 @@ const findPublications = async ({ fname, minit, lname, publicationid, title, yea
   );
 
   let sql =
-    "SELECT A.F_Name AS fname, A.M_Init AS minit, A.L_Name AS lname, P.PID AS publicationid, P.Name AS title, P.Publishing_Year AS year, PB.Name AS publisher " +
+    "SELECT A.F_Name AS fname, A.M_Init AS minit, A.L_Name AS lname, P.PID AS publicationid, P.Name AS title, P.Publishing_Year AS year, PB.Name AS publisher, P.PID AS id " +
     "FROM publication AS P " +
     "JOIN author AS A on P.AID = A.AID " +
     "JOIN publisher AS PB on P.CID = PB.CID "

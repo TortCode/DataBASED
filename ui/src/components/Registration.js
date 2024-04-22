@@ -1,39 +1,25 @@
 import { useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material'
+import axios from 'axios';
 
 export default function Registration() {
 
-    const [userId, setUserId] = useState("");
-    const [pincode, setPincode] = useState(0);
-    const [libId, setLibId] = useState("");
-    const [pubId, setPubId] = useState("");
+    const [fname, setFname] = useState("");
+    const [minit, setMinit] = useState("");
+    const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
-    const [Phonum, setPhoneNumber] = useState("");
+    const [pincode, setPincode] = useState("");
+    const [phoneNos, setPhoneNos] = useState([]);
     const [currentStatus, setCurrentStatus] = useState("No operation in progress.");
-    const [currentReturnDate, setCurrentReturnDate] = useState("No operation in progress.");
-
-    const handleUIDChange = (event) => {
-        setUserId(event.target.value);
-    }
-
-    const handlePincodeChange = (event) => {
-        setPincode(parseInt(event.target.value));
-    }
-
-    const handleLIDChange = (event) => {
-        setLibId(event.target.value);
-    }
-
-    const handlePIDChange = (event) => {
-        setPubId(event.target.value);
-    }
-
-    const sendCheckout = (event) => {
-        console.log([userId, pincode, libId, pubId]);
-    }
 
     const handleFnameChange = (event) => {
-        setUserId(event.target.value);
+        setFname(event.target.value);
+    }
+    const handleMinitChange = (event) => {
+        setMinit(event.target.value);
+    }
+    const handleLnameChange = (event) => {
+        setLname(event.target.value);
     }
 
     const handleEmailChange = (event) => {
@@ -41,7 +27,40 @@ export default function Registration() {
     }
 
     const handlePhoneNumberChange = (event) => {
-        setPhoneNumber(event.target.value);
+        setPhoneNos(event.target.value);
+    }
+
+    const handlePincodeChange = (event) => {
+        setPincode(event.target.value);
+    }
+
+
+    const addPhoneNo = (event) => {
+
+    }
+
+    const removePhoneNo = (event) => {
+
+    }
+
+    const sendRegister = (event) => {
+        const sendObject = {
+            "fname": fname,
+            "minit": minit,
+            "lname": lname,
+            "email": email,
+            "pincode": pincode,
+            "phoneNos": phoneNos
+        }
+        axios.post("/api/register", sendObject).then(
+            (res) => {
+                console.log(res);
+                setCurrentStatus("New user added!");
+            }, (err) => {
+                console.log(err);
+                setCurrentStatus("Add failed with error: ");
+            }
+        )
     }
 
     return (
@@ -52,20 +71,19 @@ export default function Registration() {
                 }} 
                 noValidate autoComplete="off">
                 <TextField id="fname" label="First Name" variant="outlined" required onChange={handleFnameChange}/>
-                <TextField id="minit" label="Middle Initial" variant="outlined" required onChange={handleFnameChange}/>
-                <TextField id="lname" label="Last Name" variant="outlined" required onChange={handleFnameChange}/>
+                <TextField id="minit" label="Middle Initial" variant="outlined" required onChange={handleMinitChange}/>
+                <TextField id="lname" label="Last Name" variant="outlined" required onChange={handleLnameChange}/>
                 <TextField id="email" label="Email" variant="outlined" required onChange={handleEmailChange}/>
                 <TextField id="pin" label="Pincode" variant="outlined" type="password" required onChange={handlePincodeChange}/>
                 <fieldset textAlign='center' sx={{ m: 2 }}>
                     <legend>Phone Numbers</legend>
                     <TextField id="phoneno" label="Phone number" variant="outlined" required onChange={handleEmailChange}/>
-                    <Button variant="outlined" onClick={sendCheckout} sx={{ m: 3, width: '25ch' }}>Add Phone Number</Button>
-                    <Button variant="outlined" onClick={sendCheckout}>Remove Phone Number</Button>
+                    <Button variant="outlined" onClick={addPhoneNo} sx={{ m: 3, width: '25ch' }}>Add Phone Number</Button>
+                    <Button variant="outlined" onClick={removePhoneNo}>Remove Phone Number</Button>
                 </fieldset>
-                <Button variant="outlined" onClick={sendCheckout}>Register</Button>
+                <Button variant="outlined" onClick={sendRegister}>Register</Button>
             </Box>
             <Typography variant='p' gutterBottom> Status: {currentStatus} <br/> </Typography>
-            <Typography variant='p' gutterBottom> Return Date: {currentReturnDate} </Typography>
         </Box>
     );
 }
