@@ -1,0 +1,9 @@
+POST http://localhost:3000/api/return
+Content-Type: application/json
+
+{
+    "userid": 50,
+    "libraryid": 4,
+    "publicationid": 28,
+    "pincode": "8905"
+}

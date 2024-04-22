@@ -1,0 +1,11 @@
+GET http://localhost:3000/api/publication
+Content-Type: application/json
+
+{
+    "fname": "Char",
+    "minit": "N",
+    "lname": "Mart",
+    "title": "Prejudice",
+    "year": 1813,
+    "publisher": "Penguin"
+}
