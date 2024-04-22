@@ -54,12 +54,12 @@ export default function AddPublication() {
             <Box component="form" textAlign='center' sx={{ ml: "20", width: '100%'}} 
                 noValidate autoComplete="off">
                 <Stack direction="column" >
-                    <TextField id="authid" label="Author ID" variant="outlined" required onChange={handleAuthIDChange}/>
-                    <TextField id="pubid" label="Publisher ID" variant="outlined" required onChange={handlePubIDChange}/>
+                    <TextField id="authid" label="Author ID" sx={{ width: '40ch', ml: 52, mb: 2 }} variant="outlined" required onChange={handleAuthIDChange}/>
+                    <TextField id="pubid" label="Publisher ID" sx={{  width: '40ch', ml: 52, mb: 2 }} variant="outlined" required onChange={handlePubIDChange}/>
                     <fieldset>
                         <legend>Publication</legend>
-                        <TextField id="title" label="Title" variant="outlined" required onChange={handleTitleChange}/>
-                        <TextField id="year" label="Year" variant="outlined" required onChange={handleYearChange}/>
+                        <TextField id="title" label="Title" sx={{ m: 2 }} variant="outlined" required onChange={handleTitleChange}/>
+                        <TextField id="year" label="Year" sx={{ m: 2 }} variant="outlined" required onChange={handleYearChange}/>
                         <Autocomplete
                             disablePortal
                             id="combo-box-demo"

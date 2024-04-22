@@ -9,7 +9,11 @@ export default function Registration() {
     const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
     const [pincode, setPincode] = useState("");
-    const [phoneNos, setPhoneNos] = useState([]);
+    const [phoneNo1, setPhoneNo1] = useState("");
+    const [phoneNo2, setPhoneNo2] = useState("");
+    const [phoneNo3, setPhoneNo3] = useState("");
+    const [phoneNoCount, setPhoneCt] = useState(1);
+    const [buttons, setButtons] = useState([]);
     const [currentStatus, setCurrentStatus] = useState("No operation in progress.");
 
     const handleFnameChange = (event) => {
@@ -26,25 +30,49 @@ export default function Registration() {
         setEmail(event.target.value);
     }
 
-    const handlePhoneNumberChange = (event) => {
-        console.log(event.target);
-        setPhoneNos(event.target.value);
+    const handlePhoneNo1Change = (event) => {
+        setPhoneNo1(event.target.value);
+    }
+    const handlePhoneNo2Change = (event) => {
+        setPhoneNo2(event.target.value);
+    }
+    const handlePhoneNo3Change = (event) => {
+        setPhoneNo3(event.target.value);
     }
 
     const handlePincodeChange = (event) => {
         setPincode(event.target.value);
     }
 
+    let fields = [<TextField id="phoneno1" label="Phone number 1" variant="outlined" sx={{ m: 3, width: '25ch' }} required onChange={handlePhoneNo1Change}/>,
+        <TextField id="phoneno2" label="Phone number 2" variant="outlined" required sx={{ m: 3, width: '25ch' }} onChange={handlePhoneNo2Change}/>,
+        <TextField id="phoneno3" label="Phone number 3" variant="outlined" required sx={{ m: 3, width: '25ch' }} onChange={handlePhoneNo3Change}/>]
 
     const addPhoneNo = (event) => {
-
+        console.log(phoneNoCount);
+        if (phoneNoCount < 3){
+            let options = fields.slice(0, phoneNoCount + 1);
+            setPhoneCt(phoneNoCount + 1);
+            setButtons(options);
+        }
     }
 
     const removePhoneNo = (event) => {
-
+        console.log(phoneNoCount);
+        if (phoneNoCount > 1){
+            let options = fields.slice(0, phoneNoCount - 1);
+            setPhoneCt(phoneNoCount - 1);
+            setButtons(options);
+        }
     }
 
     const sendRegister = (event) => {
+        let phoneNos = [phoneNo1]
+        if (phoneNoCount > 1)
+            phoneNos.push(phoneNo2)
+        if (phoneNoCount > 2)
+            phoneNos.push(phoneNo3)
+
         const sendObject = {
             "fname": fname,
             "minit": minit,
@@ -68,7 +96,7 @@ export default function Registration() {
         <Box component="div" sx={{ m: 2 }} textAlign='center'>
             <Typography variant='h1' gutterBottom> Registration </Typography>
             <Box component="form" textAlign='center' sx={{
-                '& > :not(style)': { m: 2 },
+                '& > :not(style)': { m: 1, mt: 2, mb: 2 },
                 }} 
                 noValidate autoComplete="off">
                 <TextField id="fname" label="First Name" variant="outlined" required onChange={handleFnameChange}/>
@@ -76,11 +104,13 @@ export default function Registration() {
                 <TextField id="lname" label="Last Name" variant="outlined" required onChange={handleLnameChange}/>
                 <TextField id="email" label="Email" variant="outlined" required onChange={handleEmailChange}/>
                 <TextField id="pin" label="Pincode" variant="outlined" type="password" required onChange={handlePincodeChange}/>
-                <fieldset textAlign='center' sx={{ m: 2 }}>
+                <fieldset sx={{ m: 2 }}>
                     <legend>Phone Numbers</legend>
-                    <TextField id="phoneno" label="Phone number" variant="outlined" required onChange={handlePhoneNumberChange}/>
-                    <Button variant="outlined" onClick={addPhoneNo} sx={{ m: 3, width: '25ch' }}>Add Phone Number</Button>
-                    <Button variant="outlined" onClick={removePhoneNo}>Remove Phone Number</Button>
+                    <div>
+                        {buttons}
+                        <Button variant="outlined" onClick={addPhoneNo} sx={{ m: 3, width: '30ch' }}>Add Phone Number</Button>
+                        <Button variant="outlined" onClick={removePhoneNo} sx={{ m: 3, width: '30ch' }}>Remove Phone Number</Button>
+                    </div>
                 </fieldset>
                 <Button variant="outlined" onClick={sendRegister}>Register</Button>
             </Box>

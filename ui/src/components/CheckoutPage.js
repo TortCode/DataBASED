@@ -9,7 +9,6 @@ export default function CheckoutPage() {
     const [libId, setLibId] = useState(0);
     const [pubId, setPubId] = useState(0);
     const [currentStatus, setCurrentStatus] = useState("No operation in progress.");
-    const [currentReturnDate, setCurrentReturnDate] = useState("No operation in progress.");
 
     const handleUIDChange = (event) => {
         setUserId(parseInt(event.target.value));
@@ -59,7 +58,6 @@ export default function CheckoutPage() {
                 <Button variant="outlined" onClick={sendCheckout}>Checkout</Button>
             </Box>
             <Typography variant='p' gutterBottom> Status: {currentStatus} <br/> </Typography>
-            <Typography variant='p' gutterBottom> Return Date: {currentReturnDate} </Typography>
         </Box>
     );
 }

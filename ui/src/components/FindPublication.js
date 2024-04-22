@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Stack, TextField, Typography, Autocomplete } from '@mui/material'
+import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 import axios from 'axios';
 
@@ -11,7 +11,7 @@ export default function FindPublication() {
     const [lname, setLname] = useState("");
     const [title, setTitle] = useState("");
     const [rows, setRows] = useState("");
-    const [year, setYear] = useState(0);
+    const [year, setYear] = useState(1);
     const [publisher, setPublisher] = useState("");
 
     const [currentStatus, setCurrentStatus] = useState("No operation in progress.");
@@ -26,8 +26,6 @@ export default function FindPublication() {
             }
         }
     ];
-
-    const mediums = ['Print', 'Ebook', 'Audio', 'Video']
 
     const handleFnameChange = (event) => {
         setFname(event.target.value);
@@ -58,7 +56,7 @@ export default function FindPublication() {
             "title": title,
             "publisher": publisher
         }
-        if(year != 0){
+        if(year !== 0){
             sendObject.year = year;
         }
         console.log(sendObject);
@@ -96,15 +94,15 @@ export default function FindPublication() {
                 <Stack direction="column">
                     <fieldset textAlign='center' sx={{m : 2}}>
                         <legend>Author</legend>
-                            <TextField id="fname" label="First Name" variant="outlined" required onChange={handleFnameChange}/>
-                            <TextField id="minit" label="Middle Initial" variant="outlined" required onChange={handleMinitChange}/>
-                            <TextField id="lname" label="Last Name" variant="outlined" required onChange={handleLnameChange}/>
+                            <TextField id="fname" label="First Name" sx={{ m: 2 }} variant="outlined" required onChange={handleFnameChange}/>
+                            <TextField id="minit" label="Middle Initial" sx={{ m: 2 }} variant="outlined" required onChange={handleMinitChange}/>
+                            <TextField id="lname" label="Last Name" sx={{ m: 2 }} variant="outlined" required onChange={handleLnameChange}/>
                     </fieldset>
                     <fieldset>
                         <legend>Publication</legend>
-                        <TextField id="title" label="Title" variant="outlined" required onChange={handleTitleChange}/>
-                        <TextField id="year" label="Year" variant="outlined" required onChange={handleYearChange}/>
-                        <TextField id="publisher" label="Publisher" variant="outlined" required onChange={handlePublisherChange}/>
+                        <TextField id="title" label="Title" sx={{ m: 2 }} variant="outlined" required onChange={handleTitleChange}/>
+                        <TextField id="year" label="Year" sx={{ m: 2 }} variant="outlined" required onChange={handleYearChange}/>
+                        <TextField id="publisher" label="Publisher" sx={{ m: 2 }} variant="outlined" required onChange={handlePublisherChange}/>
                     </fieldset>
                 </Stack>
                 <Button variant="outlined" onClick={handleSearch} sx={{ m: 3, width: '25ch' }}>Search</Button>
