@@ -64,7 +64,7 @@ export default function AddPublication() {
                             disablePortal
                             id="combo-box-demo"
                             options={mediums}
-                            onChange={handleMediumChange}
+                            onChange={(event, value) => setMedium(value)}
                             renderInput={(params) => <TextField {...params} id="medium" label="Medium" variant="outlined" sx={{ m: 3, width: '25ch' }} required onChange={handleMediumChange}/>}
                         />
                     </fieldset>
