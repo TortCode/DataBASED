@@ -40,7 +40,7 @@ export default function Return() {
                 setCurrentStatus("Successfully returned book!");
             }, (err) => {
                 console.log(err);
-                setCurrentStatus("Checkout failed with error: ");
+                setCurrentStatus("Book has not been checked out.");
             }
         )
     }

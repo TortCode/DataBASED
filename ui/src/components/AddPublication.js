@@ -43,7 +43,7 @@ export default function AddPublication() {
                 setCurrentStatus("New publication added!");
             }, (err) => {
                 console.log(err);
-                setCurrentStatus("Add failed with error: ");
+                setCurrentStatus("Publication addition unsuccessful.");
             }
         )
     }

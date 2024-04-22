@@ -81,7 +81,7 @@ export default function FindPublication() {
                 setCurrentStatus("Publication deleted!");
             }, (err) => {
                 console.log(err);
-                setCurrentStatus("Publication could not be deleted because it is checked out.");
+                setCurrentStatus("Publication could not be deleted.");
             }
         )
     }

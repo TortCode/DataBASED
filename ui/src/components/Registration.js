@@ -87,7 +87,7 @@ export default function Registration() {
                 setCurrentStatus("New user added!");
             }, (err) => {
                 console.log(err);
-                setCurrentStatus("Add failed with error: ");
+                setCurrentStatus("User could not be added.");
             }
         )
     }

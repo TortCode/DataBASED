@@ -39,7 +39,7 @@ export default function CheckoutPage() {
                 setCurrentStatus("Successfully checked out book!");
             }, (err) => {
                 console.log(err);
-                setCurrentStatus("Checkout failed with error: ");
+                setCurrentStatus("Checkout failed, book is already checked out.");
             }
         )
     }
