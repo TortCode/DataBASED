@@ -43,7 +43,8 @@ export default function FindPublication() {
         setTitle(event.target.value);
     }
     const handleYearChange = (event) => {
-        setYear(parseInt(event.target.value))
+        const i = parseInt(event.target.value)
+        setYear(isNaN(i) ? 0 : i)
     }
     const handlePublisherChange = (event) => {
         setPublisher(event.target.value)
@@ -79,10 +80,10 @@ export default function FindPublication() {
         axios.delete(`/api/publication/${parseInt(event.target.id.substring(2))}`).then(
             (res) => {
                 console.log(res);
-                setCurrentStatus("New publication added!");
+                setCurrentStatus("Publication deleted!");
             }, (err) => {
                 console.log(err);
-                setCurrentStatus("Add failed with error: ");
+                setCurrentStatus("Publication could not be deleted because it is checked out.");
             }
         )
     }
