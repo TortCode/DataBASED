@@ -43,7 +43,8 @@ export default function FindPublication() {
         setTitle(event.target.value);
     }
     const handleYearChange = (event) => {
-        setYear(parseInt(event.target.value))
+        const i = parseInt(event.target.value)
+        setYear(isNaN(i) ? 0 : i)
     }
     const handlePublisherChange = (event) => {
         setPublisher(event.target.value)

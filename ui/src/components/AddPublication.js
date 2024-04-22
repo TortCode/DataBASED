@@ -50,7 +50,7 @@ export default function AddPublication() {
 
     return (
         <Box component="div" sx={{ m:2, textAlign: "center"}}>
-            <Typography variant='h1' gutterBottom> Add/Remove Publication </Typography>
+            <Typography variant='h1' gutterBottom> Add Publication </Typography>
             <Box component="form" textAlign='center' sx={{ ml: "20", width: '100%'}} 
                 noValidate autoComplete="off">
                 <Stack direction="column" >
@@ -64,6 +64,7 @@ export default function AddPublication() {
                             disablePortal
                             id="combo-box-demo"
                             options={mediums}
+                            onChange={handleMediumChange}
                             renderInput={(params) => <TextField {...params} id="medium" label="Medium" variant="outlined" sx={{ m: 3, width: '25ch' }} required onChange={handleMediumChange}/>}
                         />
                     </fieldset>
