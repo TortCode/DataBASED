@@ -27,6 +27,7 @@ export default function Registration() {
     }
 
     const handlePhoneNumberChange = (event) => {
+        console.log(event.target);
         setPhoneNos(event.target.value);
     }
 
@@ -77,7 +78,7 @@ export default function Registration() {
                 <TextField id="pin" label="Pincode" variant="outlined" type="password" required onChange={handlePincodeChange}/>
                 <fieldset textAlign='center' sx={{ m: 2 }}>
                     <legend>Phone Numbers</legend>
-                    <TextField id="phoneno" label="Phone number" variant="outlined" required onChange={handleEmailChange}/>
+                    <TextField id="phoneno" label="Phone number" variant="outlined" required onChange={handlePhoneNumberChange}/>
                     <Button variant="outlined" onClick={addPhoneNo} sx={{ m: 3, width: '25ch' }}>Add Phone Number</Button>
                     <Button variant="outlined" onClick={removePhoneNo}>Remove Phone Number</Button>
                 </fieldset>
