@@ -79,10 +79,10 @@ export default function FindPublication() {
         axios.delete(`/api/publication/${parseInt(event.target.id.substring(2))}`).then(
             (res) => {
                 console.log(res);
-                setCurrentStatus("New publication added!");
+                setCurrentStatus("Publication deleted!");
             }, (err) => {
                 console.log(err);
-                setCurrentStatus("Add failed with error: ");
+                setCurrentStatus("Publication could not be deleted because it is checked out.");
             }
         )
     }
