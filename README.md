@@ -25,5 +25,7 @@ Build the frontend:
 1. Switch into the `ui` directory
 2. Execute `npm run build`
 
-Start the sever:
+Start the server:
+1. Switch into the `backend` directory
+2. Execute `npm start`
 
